@@ -1,12 +1,12 @@
-class Machine < Struct.new(:statement, :environment)
+class Machine < Struct.new(:expression, :environment)
   def step
-    self.statement, self.environment = statement.reduce(environment)
+    self.expression = expression.reduce(environment)
   end
   def run
-    while statement.reducible?
-      puts "#{statement}, #{environment}"
+    while expression.reducible?
+      puts expression
       step
     end
-    puts "#{statement}, #{environment}"
+    puts expression
   end
 end

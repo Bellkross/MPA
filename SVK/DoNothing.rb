@@ -1,4 +1,9 @@
 class DoNothing
+
+  def evaluate(environment)
+    environment
+  end
+
   def to_s
     'do-nothing'
   end
@@ -13,10 +18,6 @@ class DoNothing
 
   def reducible?
     false
-  end
-
-  def evaluate(environment)
-    environment
   end
 
   def to_ruby

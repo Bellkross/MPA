@@ -1,4 +1,9 @@
 class Sequence < Struct.new(:first, :second)
+
+  def evaluate(environment)
+    second.evaluate(first.evaluate(environment))
+  end
+
   def to_s
     "#{first}; #{second}"
   end
@@ -19,10 +24,6 @@ class Sequence < Struct.new(:first, :second)
         reduced_first, reduced_environment = first.reduce(environment)
         [Sequence.new(reduced_first, second), reduced_environment]
     end
-  end
-
-  def evaluate(environment)
-    second.evaluate(first.evaluate(environment))
   end
 
   def to_ruby
